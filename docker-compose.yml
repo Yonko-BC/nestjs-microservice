@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  user-service:
+    build:
+      context: .
+      dockerfile: ./apps/user-service/Dockerfile
+    ports:
+      - '5000:5000'
+    environment:
+      - NODE_ENV=development
+
+  order-service:
+    build:
+      context: .
+      dockerfile: ./apps/order-service/Dockerfile
+    ports:
+      - '5001:5000'
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - user-service
