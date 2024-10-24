@@ -10,6 +10,17 @@
   "monorepo": true,
   "root": "apps/gateway",
   "projects": {
+    "document-service": {
+      "type": "application",
+      "root": "apps/document-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/document-service/src",
+      "compilerOptions": {
+        "assets": ["**/*.proto"],
+        "watchAssets": true,
+        "tsConfigPath": "apps/document-service/tsconfig.app.json"
+      }
+    },
     "user-service": {
       "type": "application",
       "root": "apps/user-service",

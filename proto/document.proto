@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package document;
+
+service DocumentService {
+  rpc UploadDocument (stream DocumentChunk) returns (UploadResponse) {}
+  rpc DownloadDocument (DownloadRequest) returns (stream DocumentChunk) {}
+  rpc SyncDocument (stream DocumentChunk) returns (stream DocumentChunk) {}
+}
+
+message DocumentChunk {
+  bytes content = 1;
+  string filename = 2;
+  string contentType = 3;
+  int32 chunkNumber = 4;
+  bool isLastChunk = 5;
+  int64 size = 6;
+}
+
+message UploadResponse {
+  string message = 1;
+  string documentId = 2;
+  int64 size = 3;
+}
+
+message DownloadRequest {
+  string documentId = 1;
+}

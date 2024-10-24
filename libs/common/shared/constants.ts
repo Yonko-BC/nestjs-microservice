@@ -1,6 +1,7 @@
 export const SERVICES = {
   USER: 'USER_SERVICE',
   ORDER: 'ORDER_SERVICE',
+  DOCUMENT: 'DOCUMENT_SERVICE',
 };
 
 export const USER_SERVICE_NAME = 'UserService';

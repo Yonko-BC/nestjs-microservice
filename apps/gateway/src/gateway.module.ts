@@ -36,12 +36,28 @@ import { SERVICES } from 'libs/common/shared/constants';
         },
       },
       {
-        name: 'example',
+        name: SERVICES.DOCUMENT,
         transport: Transport.GRPC,
         options: {
-          package: 'examplePackage',
-          protoPath: join(__dirname, '..', '..', '..', 'proto', 'hero.proto'),
-          url: '0.0.0.0:50051',
+          package: 'document',
+          protoPath: join(
+            __dirname,
+            '..',
+            '..',
+            '..',
+            'proto',
+            'document.proto',
+          ),
+          url: '0.0.0.0:50054',
+          loader: {
+            keepCase: true,
+            longs: String,
+            enums: String,
+            defaults: true,
+            oneofs: true,
+          },
+          maxReceiveMessageLength: 1024 * 1024 * 100, // 100MB
+          maxSendMessageLength: 1024 * 1024 * 100, // 100MB
         },
       },
     ]),
